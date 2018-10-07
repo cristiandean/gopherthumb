@@ -4,6 +4,9 @@ GOFILES=$(wildcard *.go)
 GONAME=$(shell basename "$(PWD)")
 PID=/tmp/go-$(GONAME).pid
 
+setup:
+	@GOPATH=$(GOPATH) GOBIN=$(GOBIN) go get -d ./
+
 build:
 	@echo "Building $(GOFILES) to ./bin"
 	@GOPATH=$(GOPATH) GOBIN=$(GOBIN) go build -o bin/$(GONAME) $(GOFILES)
@@ -15,7 +18,7 @@ install:
 	@GOPATH=$(GOPATH) GOBIN=$(GOBIN) go install $(GOFILES)
 
 run:
-	@GOPATH=$(GOPATH) GOBIN=$(GOBIN) go run $(GOFILES) -ip 0.0.0.0 -port 8085
+	@GOPATH=$(GOPATH) GOBIN=$(GOBIN) go run $(GOFILES) -ip 0.0.0.0 -port 5000
 
 watch:
 	@$(MAKE) restart &

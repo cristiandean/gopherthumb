@@ -19,23 +19,11 @@ const (
 	requestIDKey key = 0
 )
 
-//Config struct
-type Config struct {
-	Port string
-	Ip   string
-}
-
 var listenAddr string
 
 // Server initialize the server
-func Server(config *Config) {
-	listenAddr = config.Ip + ":" + config.Port
-	// flag.StringVar(&listenAddr, "listen-addr", ":5000", "server listen address")
-	// flag.Parse()
-
+func Server() {
 	logger := log.New(os.Stdout, "http: ", log.LstdFlags)
-	logger.Println(config)
-	logger.Println(listenAddr)
 	router := mux.NewRouter()
 	router.SkipClean(true)
 	handlers.HTTPHandler(router)
