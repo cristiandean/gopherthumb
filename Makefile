@@ -15,7 +15,7 @@ install:
 	@GOPATH=$(GOPATH) GOBIN=$(GOBIN) go install $(GOFILES)
 
 run:
-	@GOPATH=$(GOPATH) GOBIN=$(GOBIN) go run $(GOFILES)
+	@GOPATH=$(GOPATH) GOBIN=$(GOBIN) go run $(GOFILES) -ip 0.0.0.0 -port 8085
 
 watch:
 	@$(MAKE) restart &
